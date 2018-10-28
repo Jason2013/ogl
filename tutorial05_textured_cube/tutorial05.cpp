@@ -173,21 +173,31 @@ int main( void )
     const GLuint vertx_count = sizeof(g_uv_buffer_data) / sizeof(GLfloat) / 2;
     static GLfloat g_pos_uv_buffer_data[vertx_count * 5];
 
-    for (GLuint i = 0; i < vertx_count; i++)
+    for (GLuint i = 0; i < vertx_count * 5; i += 5)
     {
         memcpy(&g_pos_uv_buffer_data[i], &g_vertex_buffer_data[i], sizeof(GLfloat) * 3);
-        memcpy(&g_pos_uv_buffer_data[i] + 3, &g_uv_buffer_data[i], sizeof(GLfloat) * 2);
+        memcpy(&g_pos_uv_buffer_data[i + 3], &g_uv_buffer_data[i], sizeof(GLfloat) * 2);
     }
 
-	GLuint vertexbuffer;
-	glGenBuffers(1, &vertexbuffer);
-	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+    for (GLuint i = 0; i < vertx_count * 5; i += 5)
+    {
+        assert(g_pos_uv_buffer_data[i] == g_vertex_buffer_data[i]);
+        assert(g_pos_uv_buffer_data[i+1] == g_vertex_buffer_data[i+1]);
+        assert(g_pos_uv_buffer_data[i+2] == g_vertex_buffer_data[i+2]);
 
-	GLuint uvbuffer;
-	glGenBuffers(1, &uvbuffer);
-	glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(g_uv_buffer_data), g_uv_buffer_data, GL_STATIC_DRAW);
+        assert(g_pos_uv_buffer_data[i + 3] == g_uv_buffer_data[i + 0]);
+        assert(g_pos_uv_buffer_data[i + 4] == g_uv_buffer_data[i + 1]);
+    }
+
+	//GLuint vertexbuffer;
+	//glGenBuffers(1, &vertexbuffer);
+	//glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+
+	//GLuint uvbuffer;
+	//glGenBuffers(1, &uvbuffer);
+	//glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(g_uv_buffer_data), g_uv_buffer_data, GL_STATIC_DRAW);
 
     GLuint pos_uv_buffer;
     glGenBuffers(1, &pos_uv_buffer);
@@ -252,8 +262,9 @@ int main( void )
 		   glfwWindowShouldClose(window) == 0 );
 
 	// Cleanup VBO and shader
-	glDeleteBuffers(1, &vertexbuffer);
-	glDeleteBuffers(1, &uvbuffer);
+	//glDeleteBuffers(1, &vertexbuffer);
+	//glDeleteBuffers(1, &uvbuffer);
+    glDeleteBuffers(1, &pos_uv_buffer);
 	glDeleteProgram(programID);
 	glDeleteTextures(1, &Texture);
 	glDeleteVertexArrays(1, &VertexArrayID);
