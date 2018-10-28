@@ -173,21 +173,24 @@ int main( void )
     const GLuint vertx_count = sizeof(g_uv_buffer_data) / sizeof(GLfloat) / 2;
     static GLfloat g_pos_uv_buffer_data[vertx_count * 5];
 
-    for (GLuint i = 0; i < vertx_count * 5; i += 5)
+    for (GLuint i = 0; i < vertx_count; i++)
     {
-        memcpy(&g_pos_uv_buffer_data[i], &g_vertex_buffer_data[i], sizeof(GLfloat) * 3);
-        memcpy(&g_pos_uv_buffer_data[i + 3], &g_uv_buffer_data[i], sizeof(GLfloat) * 2);
+        GLuint pos_uv_index = i * 5;
+        GLuint pos_index = i * 3;
+        GLuint uv_index = i * 2;
+        memcpy(&g_pos_uv_buffer_data[pos_uv_index], &g_vertex_buffer_data[pos_index], sizeof(GLfloat) * 3);
+        memcpy(&g_pos_uv_buffer_data[pos_uv_index + 3], &g_uv_buffer_data[uv_index], sizeof(GLfloat) * 2);
     }
 
-    for (GLuint i = 0; i < vertx_count * 5; i += 5)
-    {
-        assert(g_pos_uv_buffer_data[i] == g_vertex_buffer_data[i]);
-        assert(g_pos_uv_buffer_data[i+1] == g_vertex_buffer_data[i+1]);
-        assert(g_pos_uv_buffer_data[i+2] == g_vertex_buffer_data[i+2]);
+    //for (GLuint i = 0; i < vertx_count * 5; i += 5)
+    //{
+    //    assert(g_pos_uv_buffer_data[i] == g_vertex_buffer_data[i]);
+    //    assert(g_pos_uv_buffer_data[i+1] == g_vertex_buffer_data[i+1]);
+    //    assert(g_pos_uv_buffer_data[i+2] == g_vertex_buffer_data[i+2]);
 
-        assert(g_pos_uv_buffer_data[i + 3] == g_uv_buffer_data[i + 0]);
-        assert(g_pos_uv_buffer_data[i + 4] == g_uv_buffer_data[i + 1]);
-    }
+    //    assert(g_pos_uv_buffer_data[i + 3] == g_uv_buffer_data[i + 0]);
+    //    assert(g_pos_uv_buffer_data[i + 4] == g_uv_buffer_data[i + 1]);
+    //}
 
 	//GLuint vertexbuffer;
 	//glGenBuffers(1, &vertexbuffer);
@@ -209,7 +212,7 @@ int main( void )
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 		// Use our shader
 		glUseProgram(programID);
