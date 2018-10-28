@@ -92,42 +92,42 @@ int main( void )
 	// Our vertices. Tree consecutive floats give a 3D vertex; Three consecutive vertices give a triangle.
 	// A cube has 6 faces with 2 triangles each, so this makes 6*2=12 triangles, and 12*3 vertices
 	static const GLfloat g_vertex_buffer_data[] = { 
-		-1.0f,-1.0f,-1.0f,
-		-1.0f,-1.0f, 1.0f,
-		-1.0f, 1.0f, 1.0f,
-		 1.0f, 1.0f,-1.0f,
-		-1.0f,-1.0f,-1.0f,
-		-1.0f, 1.0f,-1.0f,
-		 1.0f,-1.0f, 1.0f,
-		-1.0f,-1.0f,-1.0f,
-		 1.0f,-1.0f,-1.0f,
-		 1.0f, 1.0f,-1.0f,
-		 1.0f,-1.0f,-1.0f,
-		-1.0f,-1.0f,-1.0f,
-		-1.0f,-1.0f,-1.0f,
-		-1.0f, 1.0f, 1.0f,
-		-1.0f, 1.0f,-1.0f,
-		 1.0f,-1.0f, 1.0f,
-		-1.0f,-1.0f, 1.0f,
-		-1.0f,-1.0f,-1.0f,
-		-1.0f, 1.0f, 1.0f,
-		-1.0f,-1.0f, 1.0f,
-		 1.0f,-1.0f, 1.0f,
-		 1.0f, 1.0f, 1.0f,
-		 1.0f,-1.0f,-1.0f,
-		 1.0f, 1.0f,-1.0f,
-		 1.0f,-1.0f,-1.0f,
-		 1.0f, 1.0f, 1.0f,
-		 1.0f,-1.0f, 1.0f,
-		 1.0f, 1.0f, 1.0f,
-		 1.0f, 1.0f,-1.0f,
-		-1.0f, 1.0f,-1.0f,
-		 1.0f, 1.0f, 1.0f,
-		-1.0f, 1.0f,-1.0f,
-		-1.0f, 1.0f, 1.0f,
-		 1.0f, 1.0f, 1.0f,
-		-1.0f, 1.0f, 1.0f,
-		 1.0f,-1.0f, 1.0f
+		-1.0f,-1.0f,-1.0f, 0.0f, 0.0f,
+		-1.0f,-1.0f, 1.0f, 0.0f, 0.0f,
+		-1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+		 1.0f, 1.0f,-1.0f, 0.0f, 0.0f,
+		-1.0f,-1.0f,-1.0f, 0.0f, 0.0f,
+		-1.0f, 1.0f,-1.0f, 0.0f, 0.0f,
+		 1.0f,-1.0f, 1.0f, 0.0f, 0.0f,
+		-1.0f,-1.0f,-1.0f, 0.0f, 0.0f,
+		 1.0f,-1.0f,-1.0f, 0.0f, 0.0f,
+		 1.0f, 1.0f,-1.0f, 0.0f, 0.0f,
+		 1.0f,-1.0f,-1.0f, 0.0f, 0.0f,
+		-1.0f,-1.0f,-1.0f, 0.0f, 0.0f,
+		-1.0f,-1.0f,-1.0f, 0.0f, 0.0f,
+		-1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+		-1.0f, 1.0f,-1.0f, 0.0f, 0.0f,
+		 1.0f,-1.0f, 1.0f, 0.0f, 0.0f,
+		-1.0f,-1.0f, 1.0f, 0.0f, 0.0f,
+		-1.0f,-1.0f,-1.0f, 0.0f, 0.0f,
+		-1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+		-1.0f,-1.0f, 1.0f, 0.0f, 0.0f,
+		 1.0f,-1.0f, 1.0f, 0.0f, 0.0f,
+		 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+		 1.0f,-1.0f,-1.0f, 0.0f, 0.0f,
+		 1.0f, 1.0f,-1.0f, 0.0f, 0.0f,
+		 1.0f,-1.0f,-1.0f, 0.0f, 0.0f,
+		 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+		 1.0f,-1.0f, 1.0f, 0.0f, 0.0f,
+		 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+		 1.0f, 1.0f,-1.0f, 0.0f, 0.0f,
+		-1.0f, 1.0f,-1.0f, 0.0f, 0.0f,
+		 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+		-1.0f, 1.0f,-1.0f, 0.0f, 0.0f,
+		-1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+		 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+		-1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+		 1.0f,-1.0f, 1.0f, 0.0f, 0.0f,
 	};
 
 	// Two UV coordinatesfor each vertex. They were created with Blender.
@@ -200,28 +200,29 @@ int main( void )
 		// Set our "myTextureSampler" sampler to use Texture Unit 0
 		glUniform1i(TextureID, 0);
 
+		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+
 		// 1rst attribute buffer : vertices
 		glEnableVertexAttribArray(0);
-		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 		glVertexAttribPointer(
 			0,                  // attribute. No particular reason for 0, but must match the layout in the shader.
 			3,                  // size
 			GL_FLOAT,           // type
 			GL_FALSE,           // normalized?
-			0,                  // stride
+			20,                  // stride
 			(void*)0            // array buffer offset
 		);
 
 		// 2nd attribute buffer : UVs
 		glEnableVertexAttribArray(1);
-		glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
+		//glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
 		glVertexAttribPointer(
 			1,                                // attribute. No particular reason for 1, but must match the layout in the shader.
 			2,                                // size : U+V => 2
 			GL_FLOAT,                         // type
 			GL_FALSE,                         // normalized?
-			0,                                // stride
-			(void*)0                          // array buffer offset
+			8,                                // stride
+			(void*)12                          // array buffer offset
 		);
 
 		// Draw the triangle !
