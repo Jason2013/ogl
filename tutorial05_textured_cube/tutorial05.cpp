@@ -209,6 +209,8 @@ int main( void )
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
 		// Use our shader
 		glUseProgram(programID);
 
