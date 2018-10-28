@@ -91,7 +91,7 @@ int main( void )
 
 	// Our vertices. Tree consecutive floats give a 3D vertex; Three consecutive vertices give a triangle.
 	// A cube has 6 faces with 2 triangles each, so this makes 6*2=12 triangles, and 12*3 vertices
-	static const GLfloat g_vertex_buffer_data[] = { 
+	static GLfloat g_vertex_buffer_data[] = { 
 		-1.0f,-1.0f,-1.0f, 0.0f, 0.0f,
 		-1.0f,-1.0f, 1.0f, 0.0f, 0.0f,
 		-1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
@@ -170,6 +170,16 @@ int main( void )
 		0.667979f, 1.0f-0.335851f
 	};
 
+    GLuint vertex_count = sizeof(g_vertex_buffer_data) / sizeof(float) / 3;
+    for (GLuint i = 0; i < vertex_count; i++)
+    {
+        GLuint vertex_index = i * 5;
+        GLuint uv_index = i * 2;
+
+        g_vertex_buffer_data[vertex_index + 3] = g_uv_buffer_data[uv_index];
+        g_vertex_buffer_data[vertex_index + 4] = g_uv_buffer_data[uv_index + 1];
+    }
+
 	GLuint vertexbuffer;
 	glGenBuffers(1, &vertexbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
@@ -185,7 +195,7 @@ int main( void )
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 		// Use our shader
 		glUseProgram(programID);
