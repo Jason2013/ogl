@@ -221,7 +221,7 @@ int main( void )
 			2,                                // size : U+V => 2
 			GL_FLOAT,                         // type
 			GL_FALSE,                         // normalized?
-			8,                                // stride
+			20,                                // stride
 			(void*)12                          // array buffer offset
 		);
 
