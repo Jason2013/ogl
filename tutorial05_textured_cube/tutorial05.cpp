@@ -170,6 +170,15 @@ int main( void )
 		0.667979f, 1.0f-0.335851f
 	};
 
+    const GLuint vertx_count = sizeof(g_uv_buffer_data) / sizeof(GLfloat) / 2;
+    static GLfloat g_pos_uv_buffer_data[vertx_count * 5];
+
+    for (GLuint i = 0; i < vertx_count; i++)
+    {
+        memcpy(&g_pos_uv_buffer_data[i], &g_vertex_buffer_data[i], sizeof(GLfloat) * 3);
+        memcpy(&g_pos_uv_buffer_data[i] + 3, &g_uv_buffer_data[i], sizeof(GLfloat) * 2);
+    }
+
 	GLuint vertexbuffer;
 	glGenBuffers(1, &vertexbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
@@ -179,6 +188,11 @@ int main( void )
 	glGenBuffers(1, &uvbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(g_uv_buffer_data), g_uv_buffer_data, GL_STATIC_DRAW);
+
+    GLuint pos_uv_buffer;
+    glGenBuffers(1, &pos_uv_buffer);
+    glBindBuffer(GL_ARRAY_BUFFER, pos_uv_buffer);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(g_pos_uv_buffer_data), g_pos_uv_buffer_data, GL_STATIC_DRAW);
 
 	do{
 
@@ -198,28 +212,29 @@ int main( void )
 		// Set our "myTextureSampler" sampler to use Texture Unit 0
 		glUniform1i(TextureID, 0);
 
+		glBindBuffer(GL_ARRAY_BUFFER, pos_uv_buffer);
+
 		// 1rst attribute buffer : vertices
 		glEnableVertexAttribArray(0);
-		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 		glVertexAttribPointer(
 			0,                  // attribute. No particular reason for 0, but must match the layout in the shader.
 			3,                  // size
 			GL_FLOAT,           // type
 			GL_FALSE,           // normalized?
-			0,                  // stride
+			sizeof(GLfloat)*5,                  // stride
 			(void*)0            // array buffer offset
 		);
 
 		// 2nd attribute buffer : UVs
 		glEnableVertexAttribArray(1);
-		glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
+		//glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
 		glVertexAttribPointer(
 			1,                                // attribute. No particular reason for 1, but must match the layout in the shader.
 			2,                                // size : U+V => 2
 			GL_FLOAT,                         // type
 			GL_FALSE,                         // normalized?
-			0,                                // stride
-			(void*)0                          // array buffer offset
+            sizeof(GLfloat) * 5,                                // stride
+			(void*)(sizeof(GLfloat) * 3)                          // array buffer offset
 		);
 
 		// Draw the triangle !
