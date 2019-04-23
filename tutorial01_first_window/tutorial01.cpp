@@ -23,11 +23,11 @@ int main( void )
         return -1;
     }
 
-    glfwWindowInit(GLFW_SAMPLES, 4);
-    glfwWindowInit(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowInit(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowInit(GLFW_FORWARD_COMPAT, GL_TRUE);
-    glfwWindowInit(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_SAMPLES, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_FORWARD_COMPAT, GL_TRUE);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     if (!(window = glfwCreateWindow(800, 600, "First Window", NULL, NULL)))
     {
