@@ -47,7 +47,7 @@ int main( void )
         return -1;
     }
 
-    glfwSetInputMode(window, GLFW_STICKY_KEYS, GLFW_TRUE);
+    glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
     glClearColor(1.0f, 1.0f, 0.0f, 1.0f);
 
