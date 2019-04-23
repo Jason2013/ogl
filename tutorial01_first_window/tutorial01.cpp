@@ -34,7 +34,7 @@ int main( void )
         fprintf(stderr, "Failed to create the main window\n");
         getchar();
         glfwTerminate();
-        reutrn -1;
+        return -1;
     }
     glfwMakeContextCurrent(window);
     
@@ -43,7 +43,7 @@ int main( void )
         fprintf(stderr, "Failed to load GLEW\n");
         getchar();
         glfwTerminate();
-        reutrn -1;
+        return -1;
     }
 
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
