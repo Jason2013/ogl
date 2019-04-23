@@ -57,7 +57,7 @@ int main( void )
 
         glfwSwapBuffers(window);
         glfwPollEvents();
-    } while (glfwGetKey(window, GLFW_ESCAPE_KEY) != GLFW_PRESS &&
+    } while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
             glfwWindowShouldClose(window) == 0);
 
     glfwTerminate();
