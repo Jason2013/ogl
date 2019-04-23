@@ -37,10 +37,10 @@ int main( void )
         return -1;
     }
     glfwMakeContextCurrent(window);
-    
+
     if (glewInit() != GLEW_OK)
     {
-        fprintf(stderr, "Failed to load GLEW\n");
+        fprintf(stderr, "Failed to initialize GLEW\n");
         getchar();
         glfwTerminate();
         return -1;
@@ -54,9 +54,10 @@ int main( void )
         glClear(GL_COLOR_BUFFER_BIT);
 
         glfwSwapBuffers(window);
-        glfwPollEvent();
-    } while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
-            glfwWindowShouldClose(window) == 0);
+        glfwPollEvents();
+    }
+    while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
+        glfwWindowShouldClose(window) == 0);
 
     glfwTerminate();
 
