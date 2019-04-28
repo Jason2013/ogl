@@ -1,4 +1,4 @@
-#version core 3.3
+#version core 330
 
 /* layout(location = 0) in vec3 vPos; */
 layout(location = 0) out vec4 vColor;
