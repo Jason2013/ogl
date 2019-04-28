@@ -26,7 +26,7 @@ int main( void )
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    
+
     window = glfwCreateWindow(1024, 768, "First Window", nullptr, nullptr);
     if (!window) {
         fprintf(stderr, "Failed to create window\n");
@@ -34,7 +34,7 @@ int main( void )
         glfwTerminate();
         return -1;
     }
-    glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
+    glfwMakeContextCurrent(window);
 
     if (glewInit() != GLEW_OK) {
         fprintf(stderr, "Failed to initialize GLEW\n");
@@ -42,6 +42,7 @@ int main( void )
         glfwTerminate();
         return -1;
     }
+    glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
     glClearColor(1.0f, 1.0f, 0.0f, 1.0f);
 
