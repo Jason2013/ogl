@@ -44,10 +44,41 @@ int main( void )
     }
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
+    GLuint vao;
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+
+    GLuint vertexBuffer;
+    glGenBuffers(1, &vertexBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+
+    GLfloat vertexData[] = {
+        -1.0f, -1.0f, 0.0f,
+         1.0f, -1.0f, 0.0f,
+         0.0f,  1.0f, 0.0f,
+    };
+
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
+
+    GLuint programID;
+    programID = LoadShaders("Simple.vert", "Simple.frag");
+
     glClearColor(1.0f, 1.0f, 0.0f, 1.0f);
 
     do {
         glClear(GL_COLOR_BUFFER_BIT);
+
+        glUseProgram(programID);
+
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0,
+                3,
+                GL_FLOAT,
+                GL_FALSE,
+                0,
+                (const void*)0);
+        glDrawArrays(3, 0);
+        glDisableVertexAttribArray(0);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
