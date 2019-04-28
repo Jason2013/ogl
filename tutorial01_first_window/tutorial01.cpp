@@ -77,7 +77,7 @@ int main( void )
                 3,
                 GL_FLOAT,
                 GL_FALSE,
-                sizeof(GLfloat)*3,
+                sizeof(GLfloat)*6,
                 (const void*)0);
 
         glEnableVertexAttribArray(1);
@@ -85,7 +85,7 @@ int main( void )
                 3,
                 GL_FLOAT,
                 GL_FALSE,
-                sizeof(GLfloat)*3,
+                sizeof(GLfloat)*6,
                 (const void*)(sizeof(GLfloat)*3));
 
         glDrawArrays(GL_TRIANGLES, 0, 3);
