@@ -13,6 +13,8 @@ GLFWwindow* window;
 #include <glm/glm.hpp>
 using namespace glm;
 
+#include <common/shaders.h>
+
 int main( void )
 {
     if (!glfwInit()) {
