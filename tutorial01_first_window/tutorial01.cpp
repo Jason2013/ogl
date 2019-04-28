@@ -86,7 +86,7 @@ int main( void )
                 GL_FLOAT,
                 GL_FALSE,
                 sizeof(GLfloat)*3,
-                (const void*)sizeof(GLfloat)*3);
+                (const void*)(sizeof(GLfloat)*3));
 
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
