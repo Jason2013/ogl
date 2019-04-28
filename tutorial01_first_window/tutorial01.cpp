@@ -79,7 +79,7 @@ int main( void )
                 GL_FALSE,
                 0,
                 (const void*)0);
-        glDrawArrays(3, 0);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
         glDisableVertexAttribArray(0);
 
         glfwSwapBuffers(window);
