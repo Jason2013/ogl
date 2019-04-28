@@ -55,9 +55,9 @@ int main( void )
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
 
     GLfloat vertexData[] = {
-        -1.0f, -1.0f, 0.0f,
-         1.0f, -1.0f, 0.0f,
-         0.0f,  1.0f, 0.0f,
+        -1.0f, -1.0f, 0.0f, 1.0, 0.0, 0.0,
+         1.0f, -1.0f, 0.0f, 0.0, 1.0, 0.0,
+         0.0f,  1.0f, 0.0f, 0.0, 0.0, 1.0,
     };
 
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
@@ -77,10 +77,21 @@ int main( void )
                 3,
                 GL_FLOAT,
                 GL_FALSE,
-                0,
+                sizeof(GLfloat)*3,
                 (const void*)0);
+
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(1,
+                3,
+                GL_FLOAT,
+                GL_FALSE,
+                sizeof(GLfloat)*3,
+                (const void*)sizeof(GLfloat)*3);
+
         glDrawArrays(GL_TRIANGLES, 0, 3);
+
         glDisableVertexAttribArray(0);
+        glDisableVertexAttribArray(1);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
