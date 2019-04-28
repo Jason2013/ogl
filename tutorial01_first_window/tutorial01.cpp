@@ -98,8 +98,8 @@ int main( void )
     } while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
             glfwWindowShouldClose(window) == 0);
 
-    glDeleteBuffers(1, vertexBuffer);
-    glDeleteVertexArray(1, vao);
+    glDeleteBuffers(1, &vertexBuffer);
+    glDeleteVertexArrays(1, &vao);
     glDeleteProgram(programID);
 
     glfwTerminate();
