@@ -11,6 +11,7 @@ GLFWwindow* window;
 
 // Include GLM
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 using namespace glm;
 
 #include <common/shader.hpp>
@@ -48,6 +49,16 @@ int main( void )
 
     GLuint programID;
     programID = LoadShaders("Simple.vert", "Simple.frag");
+
+    GLuint mvp;
+    mvp = glGetUniformLocation(programID, "MVP");
+
+    mat4 perspective = Perspective(radian(45), 4.0f/3.0f, 0.1f, 100.0f);
+    mat4 view = LookAt(vec3(4.0f, 3.0f, -2.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f));
+    mat4 model = mat4(1.0f);
+    mat4 MVP = perspective * view * model;
+
+    glUniformMatrix4fv(programID, mvp, &MVP[0][0]);
 
     GLuint vao;
     glGenVertexArrays(1, &vao);
