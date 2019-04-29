@@ -46,6 +46,10 @@ int main( void )
     }
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
+    GLuint vao;
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+
     glClearColor(1.0f, 1.0f, 0.0f, 1.0f);
 
     do {
@@ -55,6 +59,8 @@ int main( void )
         glfwPollEvents();
     } while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
             glfwWindowShouldClose(window) == 0);
+
+    glDeleteVertexArrays(1, &vao);
 
     glfwTerminate();
 
