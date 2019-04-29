@@ -54,7 +54,7 @@ int main( void )
     mvp = glGetUniformLocation(programID, "MVP");
 
     mat4 Perspective = perspective(radians(45.0f), 4.0f/3.0f, 0.1f, 100.0f);
-    mat4 View = lookAt(vec3(4.0f, 3.0f, -2.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f));
+    mat4 View = lookAt(vec3(4.0f, 3.0f,  2.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f));
     mat4 Model = mat4(1.0f);
     mat4 MVP = Perspective * View * Model;
 
@@ -81,7 +81,7 @@ int main( void )
 
         glUseProgram(programID);
 
-        glUniformMatrix4fv(programID, mvp, &MVP[0][0]);
+        glUniformMatrix4fv(programID, 1, GL_FALSE, &MVP[0][0]);
 
         glEnableVertexAttribArray(0);
         glVertexAttribPointer(0,
