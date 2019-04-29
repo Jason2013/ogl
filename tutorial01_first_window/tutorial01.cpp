@@ -81,7 +81,7 @@ int main( void )
 
         glUseProgram(programID);
 
-        glUniformMatrix4fv(programID, 1, GL_FALSE, &MVP[0][0]);
+        glUniformMatrix4fv(mvp, 1, GL_FALSE, &MVP[0][0]);
 
         glEnableVertexAttribArray(0);
         glVertexAttribPointer(0,
