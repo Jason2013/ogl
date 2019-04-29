@@ -12,6 +12,7 @@ GLFWwindow* window;
 // Include GLM
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 using namespace glm;
 
 #include <common/shader.hpp>
@@ -81,7 +82,7 @@ int main( void )
 
         glUseProgram(programID);
 
-        glUniformMatrix4fv(mvp, 1, GL_FALSE, &MVP[0][0]);
+        glUniformMatrix4fv(mvp, 1, GL_FALSE, value_ptr(MVP));
 
         glEnableVertexAttribArray(0);
         glVertexAttribPointer(0,
