@@ -50,6 +50,18 @@ int main( void )
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
 
+    GLuint vertexBuffer;
+    glGenBuffers(1, &vertexBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+
+    GLfloat vertexData[] = {
+        -1.0f, -1.0f, 0.0f,
+         1.0f, -1.0f, 0.0f,
+         0.0f,  1.0f, 0.0f,
+    };
+
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
+
     glClearColor(1.0f, 1.0f, 0.0f, 1.0f);
 
     do {
@@ -60,6 +72,7 @@ int main( void )
     } while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
             glfwWindowShouldClose(window) == 0);
 
+    glDeleteBuffers(1, &vertexBuffer);
     glDeleteVertexArrays(1, &vao);
 
     glfwTerminate();
