@@ -46,6 +46,9 @@ int main( void )
     }
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
+    GLuint programID;
+    programID = LoadShaders("Simple.vert", "Simple.frag");
+
     GLuint vao;
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
@@ -67,6 +70,8 @@ int main( void )
     do {
         glClear(GL_COLOR_BUFFER_BIT);
 
+        glUseProgram(programID);
+
         glEnableVertexAttribArray(0);
         glVertexAttribPointer(0,
                 3,
@@ -86,6 +91,7 @@ int main( void )
 
     glDeleteBuffers(1, &vertexBuffer);
     glDeleteVertexArrays(1, &vao);
+    glDeleteProgram(programID);
 
     glfwTerminate();
 
