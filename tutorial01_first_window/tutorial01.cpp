@@ -67,6 +67,18 @@ int main( void )
     do {
         glClear(GL_COLOR_BUFFER_BIT);
 
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0,
+                3,
+                GL_FLOAT,
+                GL_FALSE,
+                0,
+                (void*)0);
+
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        glDisableVertexAttribArray(0);
+
         glfwSwapBuffers(window);
         glfwPollEvents();
     } while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
