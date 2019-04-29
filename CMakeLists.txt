@@ -59,6 +59,7 @@ add_definitions(
 # Tutorial 1
 add_executable(tutorial01_first_window 
 	tutorial01_first_window/tutorial01.cpp
+	common/shader.cpp
 )
 target_link_libraries(tutorial01_first_window
 	${ALL_LIBS}
