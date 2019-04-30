@@ -77,8 +77,8 @@ GLuint LoadShaders(const char* vertex_file_path, const char* fragment_file_path)
     glLinkProgram(ProgramID);
 
     // Check the program
-    glProgramiv(ProgramID, GL_LINK_STATUS, &Result);
-    glProgramiv(ProgramID, GL_INFO_LOG_LENGTH, &InfoLogLength);
+    glGetProgramiv(ProgramID, GL_LINK_STATUS, &Result);
+    glGetProgramiv(ProgramID, GL_INFO_LOG_LENGTH, &InfoLogLength);
     if (InfoLogLength > 0) {
         std::vector<char> ProgramErrorMessage(InfoLogLength+1);
         glShaderInfoLog(ProgramID, ProgramErrorMessage.data());
