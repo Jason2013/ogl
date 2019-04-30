@@ -22,7 +22,7 @@ GLuint LoadShaders(const char* vertex_file_path, const char* fragment_file_path)
     string VertexShaderCode;
     ifstream VertexShaderStream(vertex_file_path);
     if (VertexShaderStream.is_open()) {
-        VertexShaderCode = string(istreambuf_iterator<char>(VertexShaderStream), istreambuf_iterator<char>());
+        VertexShaderCode.assign(istreambuf_iterator<char>(VertexShaderStream), istreambuf_iterator<char>());
     } else {
         printf("Impossible to open %s. Are you in the right directory? Don't forget to read the FAQ!\n", vertex_file_path);
         getchar();
@@ -32,7 +32,7 @@ GLuint LoadShaders(const char* vertex_file_path, const char* fragment_file_path)
     string FragmentShaderCode;
     ifstream FragmentShaderStream(fragment_file_path);
     if (FragmentShaderStream.is_open()) {
-        FragmentShaderCode = string(istreambuf_iterator<char>(FragmentShaderStream), istreambuf_iterator<char>());
+        FragmentShaderCode.assign(istreambuf_iterator<char>(FragmentShaderStream), istreambuf_iterator<char>());
     } else {
         printf("Impossible to open %s. Are you in the right directory? Don't forget to read the FAQ!\n", fragment_file_path);
         getchar();
