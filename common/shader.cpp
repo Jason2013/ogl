@@ -57,7 +57,8 @@ GLuint LoadShaders(const char* vertex_file_path, const char* fragment_file_path)
     }
 
     // Compiling fragment shader
-    glShaderSource(FragmentShaderID, 1, &FragmentShaderCode.c_str(), nullptr);
+    const char* FragmentShaderPointer = FragmentShaderCode.c_str();
+    glShaderSource(FragmentShaderID, 1, &FragmentShaderPointer, nullptr);
     glCompileShader(FragmentShaderID);
 
     // Checking fragment shader
