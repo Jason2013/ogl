@@ -43,6 +43,7 @@ GLuint LoadShaders(const char* vertex_file_path, const char* fragment_file_path)
     GLint InfoLogLength;
 
     // Compiling vertex shader
+    printf("Compiling shader: %s\n", vertex_file_path);
     const char* VertexShaderPointer = VertexShaderCode.c_str();
     glShaderSource(VertexShaderID, 1, &VertexShaderPointer, nullptr);
     glCompileShader(VertexShaderID);
@@ -57,6 +58,7 @@ GLuint LoadShaders(const char* vertex_file_path, const char* fragment_file_path)
     }
 
     // Compiling fragment shader
+    printf("Compiling shader: %s\n", fragment_file_path);
     const char* FragmentShaderPointer = FragmentShaderCode.c_str();
     glShaderSource(FragmentShaderID, 1, &FragmentShaderPointer, nullptr);
     glCompileShader(FragmentShaderID);
@@ -71,6 +73,7 @@ GLuint LoadShaders(const char* vertex_file_path, const char* fragment_file_path)
     }
 
     // Link the program
+    printf("Linking program\n");
     GLuint ProgramID;
     ProgramID = glCreateProgram();
     glAttachShader(ProgramID, VertexShaderID);
