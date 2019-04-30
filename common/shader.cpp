@@ -52,7 +52,7 @@ GLuint LoadShaders(const char* vertex_file_path, const char* fragment_file_path)
     glGetShaderiv(VertexShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
     if (InfoLogLength > 0) {
         std::vector<char> VertexShaderErrorMessage(InfoLogLength+1);
-        glGetShaderInfoLog(VertexShaderID, VertexShaderErrorMessage.data());
+        glGetShaderInfoLog(VertexShaderID, VertexShaderErrorMessage.size(), nullptr, VertexShaderErrorMessage.data());
         printf("%s\n", VertexShaderErrorMessage.data());
     }
 
@@ -66,7 +66,7 @@ GLuint LoadShaders(const char* vertex_file_path, const char* fragment_file_path)
     glGetShaderiv(FragmentShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
     if (InfoLogLength > 0) {
         std::vector<char> FragmentShaderErrorMessage(InfoLogLength+1);
-        glGetShaderInfoLog(FragmentShaderID, FragmentShaderErrorMessage.data());
+        glGetShaderInfoLog(FragmentShaderID, FragmentShaderErrorMessage.size(), nullptr, FragmentShaderErrorMessage.data());
         printf("%s\n", FragmentShaderErrorMessage.data());
     }
 
@@ -82,7 +82,7 @@ GLuint LoadShaders(const char* vertex_file_path, const char* fragment_file_path)
     glGetProgramiv(ProgramID, GL_INFO_LOG_LENGTH, &InfoLogLength);
     if (InfoLogLength > 0) {
         std::vector<char> ProgramErrorMessage(InfoLogLength+1);
-        glGetProgramInfoLog(ProgramID, ProgramErrorMessage.data());
+        glGetProgramInfoLog(ProgramID, ProgramErrorMessage.size(), nullptr, ProgramErrorMessage.data());
         printf("%s\n", ProgramErrorMessage.data());
     }
 
