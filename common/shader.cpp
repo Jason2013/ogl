@@ -86,8 +86,8 @@ GLuint LoadShaders(const char* vertex_file_path, const char* fragment_file_path)
         printf("%s\n", ProgramErrorMessage.data());
     }
 
-    glDeteachShader(ProgramID, VertexShaderID);
-    glDeteachShader(ProgramID, FragmentShaderID);
+    glDetachShader(ProgramID, VertexShaderID);
+    glDetachShader(ProgramID, FragmentShaderID);
 
     glDeleteShader(VertexShaderID);
     glDeleteShader(FragmentShaderID);
