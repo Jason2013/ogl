@@ -71,9 +71,10 @@ void computeMatricesFromInputs(){
             glm::sin(verticalAngle),
             glm::cos(verticalAngle) * glm::cos(horizontalAngle));
 
-    glm::vec3 right(glm::sin(horizontalAngle - PI / 2.0f),
+    double rightAngle = horizontalAngle - PI / 2.0f;
+    glm::vec3 right(glm::sin(rightAngle),
             0,
-            glm::cos(horizontalAngle - PI / 2.0f));
+            glm::cos(rightAngle));
 
     glm::vec3 up = glm::cross(right, direction);
 
