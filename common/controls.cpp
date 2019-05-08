@@ -61,8 +61,6 @@ void computeMatricesFromInputs(){
     CursorPos cursorPos;
     glfwGetCursorPos(window, &cursorPos.x, &cursorPos.y);
 
-    /* double lastXPos, lastYPos; */
-    /* double XPos, YPos; */
     double deltaPos = cursorPos - lastCursorPos;
     lastCursorPos = cursorPos;
 
