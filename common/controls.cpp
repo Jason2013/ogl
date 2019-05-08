@@ -61,7 +61,7 @@ void computeMatricesFromInputs(){
     CursorPos cursorPos;
     glfwGetCursorPos(window, &cursorPos.x, &cursorPos.y);
 
-    double deltaPos = cursorPos - lastCursorPos;
+    CursorPos deltaPos = cursorPos - lastCursorPos;
     lastCursorPos = cursorPos;
 
     horizontalAngle += mouseSpeed * deltaPos.x;
