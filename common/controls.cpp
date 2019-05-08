@@ -68,14 +68,18 @@ void computeMatricesFromInputs(){
     horizontalAngle += mouseSpeed * (float)deltaPos.x;
     verticalAngle += mouseSpeed * (float)deltaPos.y;
 
-    glm::vec3 direction(glm::cos(verticalAngle) * glm::sin(horizontalAngle),
-            glm::sin(verticalAngle),
-            glm::cos(verticalAngle) * glm::cos(horizontalAngle));
+    glm::vec3 direction(
+        cos(verticalAngle) * sin(horizontalAngle),
+        sin(verticalAngle),
+        cos(verticalAngle) * cos(horizontalAngle)
+    );
 
     double rightAngle = horizontalAngle - PI / 2.0f;
-    glm::vec3 right(glm::sin(rightAngle),
-            0,
-            glm::cos(rightAngle));
+    glm::vec3 right(
+        sin(rightAngle),
+        0,
+        cos(rightAngle)
+    );
 
     glm::vec3 up = glm::cross(right, direction);
 
@@ -96,7 +100,12 @@ void computeMatricesFromInputs(){
         position -= right * speed * deltaTime;
     }
 
-    ViewMatrix = glm::lookAt(position, position + direction, up);
+    ViewMatrix = glm::lookAt(
+        position,
+        position + direction,
+        up
+    );
 
+    /* ProjectionMatrix = glm::perspective(glm::radians(initialFoV), 4.0f/3.0f, 0.1f, 100.0f); */
     ProjectionMatrix = glm::perspective(initialFoV, 4.0f/3.0f, 0.1f, 100.0f);
 }
