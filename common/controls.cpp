@@ -37,7 +37,7 @@ const float PI = 3.1415926f;
 void computeMatricesFromInputs(){
     static double lastTime = glfwGetTime();
     double currentTime = glfwGetTime();
-    double deltaTime = currentTime - lastTime;
+    float deltaTime = (float)(currentTime - lastTime);
     lastTime = currentTime;
 
     struct CursorPos
