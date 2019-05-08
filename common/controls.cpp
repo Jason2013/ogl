@@ -65,8 +65,8 @@ void computeMatricesFromInputs(){
     CursorPos deltaPos = cursorPos - lastCursorPos;
     lastCursorPos = cursorPos;
 
-    horizontalAngle += mouseSpeed * deltaPos.x;
-    verticalAngle += mouseSpeed * deltaPos.y;
+    horizontalAngle += mouseSpeed * (float)deltaPos.x;
+    verticalAngle += mouseSpeed * (float)deltaPos.y;
 
     glm::vec3 direction(glm::cos(verticalAngle) * glm::sin(horizontalAngle),
             glm::sin(verticalAngle),
