@@ -50,13 +50,14 @@ void computeMatricesFromInputs(){
             result.y = this->y - rhs.y;
             return result;
         }
+        static CursorPos GetCursorPos() {
+            CursorPos pos;
+            glfwGetCursorPos(window, &pos.x, &pos.y);
+            return pos;
+        }
     };
 
-    static CursorPos lastCursorPos = [](){
-        CursorPos pos;
-        glfwGetCursorPos(window, &pos.x, &pos.y);
-        return pos;
-    };
+    static CursorPos lastCursorPos = CursorPos::GetCursorPos();
 
     CursorPos cursorPos;
     glfwGetCursorPos(window, &cursorPos.x, &cursorPos.y);
